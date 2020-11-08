@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Utilities</title>
+  <style>
+    .group {
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+      justify-content: center;
+      align-items: center;
+      display: inline-flex;
+      flex-flow: wrap;
+      padding: 5px;
+    }
+
+    .group hr {
+      width: 100%;
+    }
+
+   .nlhr {
+      border: none;
+    }
+
+    .code {
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="group">
+    <h1>QQ昵称后缀生成</h1>
+
+    <hr class="nlhr">
+
+    <input type="text" id="uname" value="" style="margin-right: 10px;" placeholder="主要昵称">
+    <input type="text" id="attrib" value="" style="margin-right: 10px;" placeholder="后缀">
+    <button onclick="reverseString()">Go!</button>
+
+    <hr>
+
+    <h2 style="margin-bottom:5px;">应用场景</h2>
+
+    <hr class="nlhr">
+
+    <div class="code">
+      昵称
+    </div>
+    :你妈没了
+    <div class="code">
+      后缀
+    </div>
+  </div>
+
+  <hr class="nlhr">
+
+  Coded by fumiko (2394425147)
+
+  <script type="text/javascript">
+    function reverseString() {
+      var username = document.getElementById("uname").value;
+      var attributes = document.getElementById("attrib").value;
+
+      attributes = attributes.split("").reverse().join("");
+      var ltr = "‭";
+      var rtl = "‮";
+
+      copyTextToClipboard(username + rtl + attributes + ltr);
+      alert("已复制到剪切板");
+    }
+
+    function copyTextToClipboard(str)
+    {
+      // Create new element
+       var el = document.createElement('textarea');
+      // Set value (string to be copied)
+      el.value = str;
+      // Set non-editable to avoid focus and move outside of view
+      el.setAttribute('readonly', '');
+      el.style = {position: 'absolute', left: '-9999px'};
+      document.body.appendChild(el);
+      // Select text inside element
+      el.select();
+      // Copy text to clipboard
+      document.execCommand('copy');
+      // Remove temporary element
+      document.body.removeChild(el);
+    }
+  </script>
+</body>
+
+</html>
